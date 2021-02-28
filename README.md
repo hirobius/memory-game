@@ -1,2 +1,3 @@
-# group-project
-Lorem Ipsum
+# group-project-1
+
+Dev / Staging
