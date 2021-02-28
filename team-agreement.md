@@ -40,14 +40,14 @@ Turn-based accountability: going in a circle to make sure everyone put in their 
 
 Open, organic conversations
 
-## How will you ensure that you are creating a safe environment where everyone feels comfortable speaking up?
+### How will you ensure that you are creating a safe environment where everyone feels comfortable speaking up?
 Turn-based / accountability / Going in a circle to make sure everyone put in their .02
 
 Open, organic conversations
 
 ---
 
-# Work Plan
+## Work Plan
 
 Daily Standup
 
