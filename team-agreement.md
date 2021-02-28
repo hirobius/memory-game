@@ -23,12 +23,22 @@ Duress Word — LOBBY
 ### Cardinal Rule: Group Health comes first
 
 ## How will you raise concerns to members who are not adequately contributing?
+
 Remind that this is a safe place
+
 Talk to the Group about it and work through it together
+
 Lowest Level method
+
 Let them Know, no nonsense
+
 Daily accountability
+
 Communication
+
+---
+
+If dedication to the project is not displayed or if members are not present, the project will resume as scheduled. 
 
 ### How and when will you escalate the conflict if your resolution attempts are unsuccessful?
 Initially handle with the Lowest Level method, then up the chain
@@ -45,7 +55,7 @@ Fridays and Sundays are Catch-up days / Flex Days
 Evening participation for regular class hours is mandatory, any extra time spent is fair game, so long as everyone is in agreement and on board with the additional work being completed during these hours
 
 ### What is your strategy for ensuring everyone’s voice is heard?
-Turn-based accountability: going in a circle to make sure everyone put in their .02
+Turn-based accountability: going in a circle to make sure everyone puts in their .02
 
 Open, organic conversations
 
