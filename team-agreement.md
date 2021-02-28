@@ -1,9 +1,6 @@
 # Team Agreement
 
-Thomas A.
-Tony R.
-Louis L.
-Adrian M.
+Thomas A, Tony R, Louis L, Adrian M
 
 ## Conflict
 
