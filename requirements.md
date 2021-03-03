@@ -10,7 +10,15 @@ Fun learning
 
 ## Why should we care about your product?
 
-Because it is great
+This product will exercises the brain by:
+  
+  - improve brain functions, concentration, focus and attention to detail
+  
+  - improve/train visual recognition
+  
+  - improve short-term memory, which can help develop long-term memory
+  
+  - improve vocabulary
 
 
 ---
