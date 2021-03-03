@@ -2,19 +2,19 @@
 
 ## Domain Modeling
 
-https://user-images.githubusercontent.com/75229244/109753516-41412a80-7b97-11eb-9cef-a973e8c2a9ec.png
+![image](https://user-images.githubusercontent.com/75229244/109753516-41412a80-7b97-11eb-9cef-a973e8c2a9ec.png)
 
 ## Wires
 
-https://user-images.githubusercontent.com/75229244/109753022-51a4d580-7b96-11eb-9fb0-cdda6d154130.png
+![image](https://user-images.githubusercontent.com/75229244/109753022-51a4d580-7b96-11eb-9fb0-cdda6d154130.png)
 
-https://user-images.githubusercontent.com/75229244/109753184-a47e8d00-7b96-11eb-8886-b121d9be3a21.png
+![image](https://user-images.githubusercontent.com/75229244/109753184-a47e8d00-7b96-11eb-8886-b121d9be3a21.png)
 
-https://user-images.githubusercontent.com/75229244/109753042-5bc6d400-7b96-11eb-8d6d-fd14c780dfdf.png
+![image](https://user-images.githubusercontent.com/75229244/109753042-5bc6d400-7b96-11eb-8d6d-fd14c780dfdf.png)
 
-https://user-images.githubusercontent.com/75229244/109753057-63867880-7b96-11eb-91ed-1fc04dd595d1.png
+![image](https://user-images.githubusercontent.com/75229244/109753057-63867880-7b96-11eb-91ed-1fc04dd595d1.png)
 
-https://user-images.githubusercontent.com/75229244/109753069-697c5980-7b96-11eb-9815-a500c619b5f1.png
+![image](https://user-images.githubusercontent.com/75229244/109753069-697c5980-7b96-11eb-9815-a500c619b5f1.png)
 
 ## User Stories
 
