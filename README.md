@@ -87,3 +87,7 @@ _Stat Tracker_
 - Based on Industry standard screening tool
 - Disabled User: “Accessibility mode”
 - Way to Enlarge Fonts in-game
+
+
+<!-- dinosaur image pack reference is below -->
+<div>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
