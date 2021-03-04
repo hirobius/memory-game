@@ -87,3 +87,8 @@ _Stat Tracker_
 - Based on Industry standard screening tool
 - Disabled User: “Accessibility mode”
 - Way to Enlarge Fonts in-game
+
+
+
++++ 
+
