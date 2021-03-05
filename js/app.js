@@ -129,6 +129,9 @@ function renderCards() {
 }
 renderCards();
 console.log(board);
+
 // easy render
+
 // medium render
+
 // hard render
