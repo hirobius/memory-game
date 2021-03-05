@@ -1,12 +1,19 @@
+body {
+  background-color: white;
+}
+
 #card-container {
-  width: 55vw;
+  width: 40vw;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-template-rows: repeat(4,1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-gap: 12px;
 }
+
 .cards {
-  width: 160px;
-  border: 1px solid black;
+  width: 48px;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: whitesmoke;
 }
