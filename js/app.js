@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // // Functions to Create
 
@@ -32,10 +32,10 @@
 // // --- congratulations notification
 // // --- sort scores from HIGH/LOW
 
-‘use strict’;
 // let moves = 0;
 // moves++;
-let cardContainer = document.getElementById(‘card-container’);
+
+let cardContainer = document.getElementById('card-container');
 let deck = [];
 let board = [];
 function Card(name) {
@@ -43,47 +43,47 @@ function Card(name) {
   this.src = `img/${name}.png`;
   deck.push(this);
 }
-new Card(‘allosaurus’);
-new Card(‘ankylosaurus’);
-new Card(‘ceratosaurus’);
-new Card(‘dinosaurs-1’);
-new Card(‘dinosaurs’);
-new Card(‘diplodocus’);
-new Card(‘egg’);
-new Card(‘elasmosaurus’);
-new Card(‘gallimimus’);
-new Card(‘guanlong’);
-new Card(‘ichthyosaurus’);
-new Card(‘indominus-rex’);
-new Card(‘island’);
-new Card(‘kentrosaurus’);
-new Card(‘meat’);
-new Card(‘metriacanthosaurus’);
-new Card(‘microceratus’);
-new Card(‘mosasaurus’);
-new Card(‘ouranosaurus’);
-new Card(‘pachycephalosaurus’);
-new Card(‘palm-tree’);
-new Card(‘parasaurolophus-1’);
-new Card(‘parasaurolophus’);
-new Card(‘phuwiangosaurus’);
-new Card(‘plesiosaurus’);
-new Card(‘pliosaurus’);
-new Card(‘pterosaurus’);
-new Card(‘spinosaurus’);
-new Card(‘stegosaurus’);
-new Card(‘styracosaurus’);
-new Card(‘suchomimus’);
-new Card(‘triceratops’);
-new Card(‘troodon’);
-new Card(‘tyrannosaurus-rex’);
-new Card(‘velociraptor’);
-new Card(‘volcano’);
+new Card('allosaurus');
+new Card('ankylosaurus');
+new Card('ceratosaurus');
+new Card('dinosaurs-1');
+new Card('dinosaurs');
+new Card('diplodocus');
+new Card('egg');
+new Card('elasmosaurus');
+new Card('gallimimus');
+new Card('guanlong');
+new Card('ichthyosaurus');
+new Card('indominus-rex');
+new Card('island');
+new Card('kentrosaurus');
+new Card('meat');
+new Card('metriacanthosaurus');
+new Card('microceratus');
+new Card('mosasaurus');
+new Card('ouranosaurus');
+new Card('pachycephalosaurus');
+new Card('palm-tree');
+new Card('parasaurolophus-1');
+new Card('parasaurolophus');
+new Card('phuwiangosaurus');
+new Card('plesiosaurus');
+new Card('pliosaurus');
+new Card('pterosaurus');
+new Card('spinosaurus');
+new Card('stegosaurus');
+new Card('styracosaurus');
+new Card('suchomimus');
+new Card('triceratops');
+new Card('troodon');
+new Card('tyrannosaurus-rex');
+new Card('velociraptor');
+new Card('volcano');
 function shuffle() {
   return Math.floor(Math.random() * deck.length);
 }
 let randomCard = shuffle();
-for (let i = 0; i < deck.length; i++) {
+for (let i = 0; i < deck.length - 1; i++) {
   board.push(shuffle());
   while (!board.includes(randomCard)) {
     board.push(randomCard);
@@ -119,16 +119,19 @@ for (let i = 0; i < deck.length; i++) {
 function renderCards() {
   if (deck.length > 35) {
     deck.map((each) => {
-      let card = document.createElement(‘img’);
-      card.setAttribute(‘src’, `${each.src}`);
-      card.setAttribute(‘class’, ‘cards’);
-      card.setAttribute(‘alt’, `${each.name}`);
+      let card = document.createElement('img');
+      card.setAttribute('src', `${each.src}`);
+      card.setAttribute('class', 'cards');
+      card.setAttribute('alt', `${each.name}`);
       cardContainer.appendChild(card);
     });
   }
 }
 renderCards();
 console.log(board);
+
 // easy render
+
 // medium render
+
 // hard render
