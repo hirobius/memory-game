@@ -38,6 +38,7 @@
 let cardContainer = document.getElementById('card-container');
 let deck = [];
 let board = [];
+
 function Card(name) {
   this.name = name;
   this.src = `img/${name}.png`;
@@ -79,16 +80,30 @@ new Card('troodon');
 new Card('tyrannosaurus-rex');
 new Card('velociraptor');
 new Card('volcano');
+
 function shuffle() {
-  return Math.floor(Math.random() * deck.length);
+  return Math.floor(Math.random() * board.length);
 }
-let randomCard = shuffle();
-for (let i = 0; i < deck.length - 1; i++) {
-  board.push(shuffle());
-  while (!board.includes(randomCard)) {
-    board.push(randomCard);
+// let randomCard = shuffle();
+let randomArray = [];
+function deckShuffler() {
+  while (randomArray.length < board.length) {
+    let cardRandom = shuffle();
+    while (!randomArray.includes(cardRandom)) {
+      randomArray.push(cardRandom);
+    }
   }
 }
+function filledBoard() {
+  for (let i = 0; i < 12; i++) {
+    board.push(deck[i]);
+    board.push(deck[i]);
+  }
+  console.log(board);
+}
+filledBoard();
+deckShuffler();
+
 // const cards = document.querySelectorAll(‘.card’);
 // let hasFlippedCard = false;
 // let firstCard, secondCard;
@@ -117,15 +132,16 @@ for (let i = 0; i < deck.length - 1; i++) {
 // }
 // board.forEach(card => card.addEventListener(‘click’, flipcard));
 function renderCards() {
-  if (deck.length > 35) {
-    deck.map((each) => {
-      let card = document.createElement('img');
-      card.setAttribute('src', `${each.src}`);
-      card.setAttribute('class', 'cards');
-      card.setAttribute('alt', `${each.name}`);
-      cardContainer.appendChild(card);
-    });
+  for (let i = 0; i < randomArray.length; i++) {
+
+    let card = document.createElement('img');
+    card.setAttribute('src', `${board[randomArray[i]].src}`);
+    card.setAttribute('class', 'cards');
+    card.setAttribute('alt', `${board[randomArray[i]].src}`);
+    cardContainer.appendChild(card);
+
   }
+
 }
 renderCards();
 console.log(board);
