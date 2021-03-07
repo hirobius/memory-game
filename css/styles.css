@@ -3,19 +3,44 @@ body {
 }
 
 #card-container {
-  width: 40vw;
+  width: 50vw;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 12px;
+  perspective: 1000px;
+  /* border: 3px solid black; */
 }
 
 .cards {
-  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
   border-radius: 4px;
   padding: 20px;
   background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 5px;
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, .3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  background-image: url('../img/logo.png');
+  background-size: cover;
 }
 
-/* test  */
+.cards:active {
+  transform: scale(0.3);
+  transition: transform .2s;
+}
+
+.cards.flip {
+  transform: rotateY(180deg);
+  background-image: none;
+}

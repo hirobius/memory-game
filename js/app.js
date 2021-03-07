@@ -36,8 +36,10 @@
 // moves++;
 
 let cardContainer = document.getElementById('card-container');
+const cards = document.getElementsByClassName('cards');
 let deck = [];
 let board = [];
+
 
 function Card(name) {
   this.name = name;
@@ -81,10 +83,17 @@ new Card('tyrannosaurus-rex');
 new Card('velociraptor');
 new Card('volcano');
 
+function filledBoard() {
+  for (let i = 0; i < 12; i++) {
+    board.push(deck[i]);
+    board.push(deck[i]);
+  }
+}
+
 function shuffle() {
   return Math.floor(Math.random() * board.length);
 }
-// let randomCard = shuffle();
+
 let randomArray = [];
 function deckShuffler() {
   while (randomArray.length < board.length) {
@@ -94,60 +103,81 @@ function deckShuffler() {
     }
   }
 }
-function filledBoard() {
-  for (let i = 0; i < 12; i++) {
-    board.push(deck[i]);
-    board.push(deck[i]);
-  }
-  console.log(board);
-}
-filledBoard();
-deckShuffler();
 
-// const cards = document.querySelectorAll(‘.card’);
-// let hasFlippedCard = false;
-// let firstCard, secondCard;
-// function flipcard() {
-//   this.classList.add(‘flip’);
-//   if (!hasFlippedCard) {
-//     //first click
-//     hasFlippedCard = true;
-//     firstCard = this;
-//   } else {
-//     //second click
-//     hasFlippedCard = false;
-//     secondCard = this;
-//     //do cards match?
-//     if (firstCard.xxx.xxx === secondCard.xxx.xxx) {
-//       //its a match
-//       firstCard.removeEventListener(‘click’, flipcard);
-//       secondCard.removeEventListener(‘click’, flipcard);
-//     } else {
-//       //its not a match
-//       setTimeout(() => { }
-//       firstCard.classList.remove(‘flip’);
-//       secondCard.classList.remove(‘flip’);
-//     }
-//   }
-// }
-// board.forEach(card => card.addEventListener(‘click’, flipcard));
 function renderCards() {
   for (let i = 0; i < randomArray.length; i++) {
-
     let card = document.createElement('img');
-    card.setAttribute('src', `${board[randomArray[i]].src}`);
+    card.setAttribute('src', `${board[randomArray[i]].
+      src}`);
     card.setAttribute('class', 'cards');
-    card.setAttribute('alt', `${board[randomArray[i]].src}`);
+    card.setAttribute('alt', `${board[randomArray[i]].
+      src}`);
     cardContainer.appendChild(card);
-
   }
-
 }
+
+//checking for matched cards
+function cardSelected() {
+  let cardOne, cardTwo, cardOneAlt, cardTwoAlt;
+  let clicks = 0;
+  cardContainer.addEventListener('click', function (e) {
+    if (e.target.alt !== undefined) {
+      clicks++;
+      if (clicks === 1) {
+        cardOne = e.target;
+        cardOneAlt = e.target.alt;
+        e.target.classList.toggle('flip');
+      } else if (clicks === 2) {
+        cardTwo = e.target;
+        cardTwoAlt = e.target.alt;
+        e.target.classList.toggle('flip');
+      }
+      console.log(cardOne, cardTwo);
+      if (cardOneAlt === cardTwoAlt) {
+        console.log('the cards match');
+        clicks = 0;
+        cardOne = null;
+        cardOneAlt = null;
+        cardTwoAlt = null;
+        return cardTwo = null;
+
+      } else if (cardOneAlt !== cardTwoAlt && clicks === 2) {
+        setTimeout(() => {
+          cardOne.classList.toggle('flip');
+          cardTwo.classList.toggle('flip');
+          console.log('no match');
+          clicks = 0;
+          cardOne = null;
+          cardOneAlt = null;
+          cardTwoAlt = null;
+          return cardTwo = null;
+        }, 1500);
+      }
+    }
+  });
+}
+
+// function myFunction() {
+// var x = document.getElementById('cards');
+// if (x.style.display === 'none') {
+// x.style.display = 'block';
+// } else {
+// x.style.display = 'none';
+// }
+// }
+
+console.log(cards);
+filledBoard();
+deckShuffler();
 renderCards();
+cardSelected();
+// myFunction();
+
+
+console.log(deck);
 console.log(board);
+console.log(randomArray);
 
-// easy render
+//function gameTimer();
 
-// medium render
 
-// hard render
