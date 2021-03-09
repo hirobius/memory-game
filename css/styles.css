@@ -1,33 +1,69 @@
 body {
   background-color: white;
+  position: relative;
+  /* display: flex;
+  justify-content: center; */
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 40px;
+}
+
+#help {
+  position: fixed;
+  text-align: center;
+  border-radius: 100%;
+  font-size: 32px;
+  top: 40px;
+  right: 40px;
+  height: 40px;
+  width: 40px;
+  background-color: teal;
+  color: white;
+}
+
+#help:hover {
+
+}
+
+.nav {
+  display: inline-block;
+  margin: auto;
+}
+
+.form {
+  display: inline-block;
+  margin: auto;
+  height: 10px;
 }
 
 #card-container {
-  position: absolute;
-  top: 120px;
-  left: 25%;
-  width: 50vw;
+  top: 80px;
+  min-width: 600px;
+  width: 20vw;
   margin: auto;
-  padding: 32px;
+  padding-top: 32px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-gap: 12px;
+  grid-gap: 0px;
   perspective: 1000px;
+  /* border: 1px black solid; */
 }
 
 .cards {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 80px;
   height: 80px;
-  border-radius: 4px;
-  padding: 20px;
   background-color: gray;
   border: none;
   border-radius: 6px;
-  margin: 5px;
+  margin: 8px;
   position: relative;
   /* box-shadow: 1px 1px 0 rgba(0, 0, 0, .3); */
   /* transform: scale(1); */
@@ -51,8 +87,24 @@ body {
   background-color: whitesmoke;
 }
 
-.incorrect {
-  
+.play {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
+.play li {
+  display: inline-block;
+  margin: auto;
+  padding: 12px;
+  background-color: mediumorchid;
+  color: white;
+  border-radius: 4px;
+}
 /*  */
+
+footer {
+  position: fixed;
+  bottom: 0%;
+}

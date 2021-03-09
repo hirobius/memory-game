@@ -1,40 +1,39 @@
 'use strict';
 
-// // Functions to Create
+// let tries/moves = [];
+// let resetButton;
+// let congratulations = document.getElementById;
+// let tries = 0;
+// tries++;
+// function gameTimer();
 
-// // 1. Global Variables
-// // --- empty card array
-// let emptyCard = [];
-// // --- leaderboard array
-// let topTen = [];
-// // --- click counter
-// let clicks = [];
-// // --- timer
-// // --- reset button
+// LEADERBOARD
 
-// // 2. Create board function (rendering board)
-// // - click - play button
+// let topTenEasy = [];
+// let topTenMedium = [];
+// let topTenHard = [];
 
-// // 3. Arrange card function
-// // - click - easy/med/hard
+// let topPlayer = document.getElementById('leaderboard');
+// for (let i = 0; i < allPlayers.length; i++) {
+//   let child = document.createElement('li');
+//   let currentPlayer = allPlayers[i];
+//   child.textContent = currentPlayer.name;
+//   topPlayer.appendChild(child);
+// }
+// function topTenSorter(playerOne, playerTwo) {
+//   if (playerOne.tries > playerTwo.tries) {
+//     return -1;
+//   }
+//   if (playerOne.tries < playerTwo.tries) {
+//     return 1;
+//   }
+//   if (playerOne.tries === playerTwo.tries) {
+//     return 0;
+//   }
+// };
+// topTenSorter();
 
-// // 4. Flip card function
-// // - click - card flip
-
-// // 5. Check match/equiality function
-// // - IF INCORRECT, flip back over
-// // - remove click - card flip (IF MATCHED)
-
-// // 6. MODAL play again function
-// // - click - play button
-
-// // 7. Render to leaderboard IF IN TOP 10
-// // --- congratulations notification
-// // --- sort scores from HIGH/LOW
-
-// let moves = 0;
-// moves++;
-
+let difficulty = document.getElementById('difficulty');
 let incorrect = document.getElementById('incorrect');
 let cardContainer = document.getElementById('card-container');
 const cards = document.getElementsByClassName('cards');
@@ -83,8 +82,25 @@ new Card('tyrannosaurus-rex');
 new Card('velociraptor');
 new Card('volcano');
 
-function filledBoard() {
+function easyBoard() {
+  board = [];
+  for (let i = 0; i < 8; i++) {
+    board.push(deck[i]);
+    board.push(deck[i]);
+  }
+}
+
+function mediumBoard() {
+  board = [];
   for (let i = 0; i < 12; i++) {
+    board.push(deck[i]);
+    board.push(deck[i]);
+  }
+}
+
+function hardBoard() {
+  board = [];
+  for (let i = 0; i < 18; i++) {
     board.push(deck[i]);
     board.push(deck[i]);
   }
@@ -168,31 +184,23 @@ function cardSelected() {
   });
 }
 
-// function myFunction() {
-// var x = document.getElementById('cards');
-// if (x.style.display === 'none') {
-// x.style.display = 'block';
-// } else {
-// x.style.display = 'none';
-// }
-// }
-
-console.log(cards);
-filledBoard();
-deckShuffler();
-renderCards();
-cardSelected();
-// myFunction();
-
-
-console.log(deck);
-console.log(board);
-console.log(randomArray);
-
-//function gameTimer();
-
-
-// 
-
-
-// Start by assigning properties. Google Sort Array JS MDN, find the one that sorts based on object properties
+difficulty.addEventListener('click', function (e) {
+  let difficultyChosen = e.target.textContent;
+  console.log(difficultyChosen);
+  if (difficultyChosen === 'Easy') {
+    easyBoard();
+    deckShuffler();
+    renderCards();
+    cardSelected();
+  } else if (difficultyChosen === 'Medium') {
+    mediumBoard();
+    deckShuffler();
+    renderCards();
+    cardSelected();
+  } else if (difficultyChosen === 'Hard') {
+    hardBoard();
+    deckShuffler();
+    renderCards();
+    cardSelected();
+  }
+});
