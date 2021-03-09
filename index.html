@@ -7,18 +7,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
-
   <title>Memory Madness</title>
 </head>
 
 <body>
-  <h1>Memory Madness!</h1>
+  <h1>Memory</h1>
   <header>
-    <a href="about.html">About Us</a>
-    <div id="help">???</div>
+    <section class="nav">
+      <!-- <a href="about.html">About Us</a> -->
+      <!-- <a href="leaderboard.html">Top Score</a> -->
+      <div id="help">?</div>
+    </section>
   </header>
-  <form id="playername submission"></form>
+  <section class="play">
+    <ul id="difficulty">
+      <li>Easy</li>
+      <li>Medium</li>
+      <li>Hard</li>
+    </ul>
+  </section>
+  <section id="form">
+    <form id="playername submission"></form>
+  </section>
+  <h1 id="incorrect"></h1>
+  <section id="card-container"></section>
   <script src="js/app.js"></script>
-  <footer> Don't forget the copywrite symbol</footer>
+  <footer>
+    <p>Powered by Memory &copy; 2021 All Rights Reserved.</p>
+  </footer>
 </body>
+
 </html>
