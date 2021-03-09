@@ -192,6 +192,7 @@ console.log(randomArray);
 //function gameTimer();
 
 
+// 
 
 
 // Start by assigning properties. Google Sort Array JS MDN, find the one that sorts based on object properties
