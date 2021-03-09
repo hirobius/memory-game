@@ -35,11 +35,11 @@
 // let moves = 0;
 // moves++;
 
+let incorrect = document.getElementById('incorrect');
 let cardContainer = document.getElementById('card-container');
 const cards = document.getElementsByClassName('cards');
 let deck = [];
 let board = [];
-
 
 function Card(name) {
   this.name = name;
@@ -107,9 +107,9 @@ function deckShuffler() {
 function renderCards() {
   for (let i = 0; i < randomArray.length; i++) {
     let card = document.createElement('img');
-    card.setAttribute('src', `${board[randomArray[i]].
-      src}`);
+    card.setAttribute('src', '../img/grey.png');
     card.setAttribute('class', 'cards');
+    card.setAttribute('id', i);
     card.setAttribute('alt', `${board[randomArray[i]].
       src}`);
     cardContainer.appendChild(card);
@@ -127,10 +127,12 @@ function cardSelected() {
         cardOne = e.target;
         cardOneAlt = e.target.alt;
         e.target.classList.toggle('flip');
+        e.target.src = board[randomArray[+e.target.id]].src;
       } else if (clicks === 2) {
         cardTwo = e.target;
         cardTwoAlt = e.target.alt;
         e.target.classList.toggle('flip');
+        e.target.src = board[randomArray[+e.target.id]].src;
       }
       console.log(cardOne, cardTwo);
       if (cardOneAlt === cardTwoAlt) {
@@ -140,11 +142,20 @@ function cardSelected() {
         cardOneAlt = null;
         cardTwoAlt = null;
         return cardTwo = null;
-
       } else if (cardOneAlt !== cardTwoAlt && clicks === 2) {
+        // cardOne.setAttribute('class', 'incorrect cards');
+        cardOne.classList.toggle('incorrect');
+        incorrect.setAttribute('style', 'background-color: red; font-size: 100px'); // cardOne.classList.add('incorrect-animation');
+        incorrect.textContent = 'incorrect';
         setTimeout(() => {
+          // cardOne.classList.setAttribute('class', 'cards');
+          cardOne.classList.remove('incorrect');
           cardOne.classList.toggle('flip');
+          incorrect.setAttribute('style', ''); // incorrect.classList.remove('incorrect-animation');
+          incorrect.textContent = '';
+          cardOne.src = '../img/grey.png';
           cardTwo.classList.toggle('flip');
+          cardTwo.src = '../img/grey.png';
           console.log('no match');
           clicks = 0;
           cardOne = null;
@@ -181,3 +192,6 @@ console.log(randomArray);
 //function gameTimer();
 
 
+
+
+// Start by assigning properties. Google Sort Array JS MDN, find the one that sorts based on object properties

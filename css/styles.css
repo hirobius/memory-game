@@ -3,36 +3,42 @@ body {
 }
 
 #card-container {
+  position: absolute;
+  top: 120px;
+  left: 25%;
   width: 50vw;
   margin: auto;
+  padding: 32px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 12px;
   perspective: 1000px;
-  /* border: 3px solid black; */
 }
 
 .cards {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 4px;
   padding: 20px;
-  background-color: whitesmoke;
-  border: 1px solid black;
-  border-radius: 10px;
+  background-color: gray;
+  border: none;
+  border-radius: 6px;
   margin: 5px;
   position: relative;
-  transform-style: preserve-3d;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, .3);
-  transform: scale(1);
+  /* box-shadow: 1px 1px 0 rgba(0, 0, 0, .3); */
+  /* transform: scale(1); */
   transform-style: preserve-3d;
   transition: transform .5s;
-  background-image: url('../img/logo.png');
   background-size: cover;
+}
+
+.cards:hover {
+  transform: scale(1.1);
+  background-color: lightslategray;
 }
 
 .cards:active {
@@ -42,5 +48,9 @@ body {
 
 .cards.flip {
   transform: rotateY(180deg);
-  background-image: none;
+  background-color: whitesmoke;
+}
+
+.incorrect {
+  
 }
