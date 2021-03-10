@@ -3,6 +3,7 @@
 let difficulty = document.getElementById('difficulty');
 let incorrect = document.getElementById('incorrect');
 let cardContainer = document.getElementById('card-container');
+let playAgain = document.createElement('div');
 const cards = document.getElementsByClassName('cards');
 let deck = [];
 let board = [];
@@ -10,7 +11,7 @@ let timeLeftDisplay = document.getElementById('timer');
 // let gameOverText = document.getElementById('game-over-text');
 let ticker = document.getElementById('ticker');
 let score = 0;
-let timeLeft = 100;
+let timeLeft = 2;
 let playerForm = document.getElementById('playername');
 let allPlayers = JSON.parse(localStorage.getItem('players')) || [];
 let playerName = '';
@@ -58,7 +59,6 @@ new Card('tyrannosaurus-rex');
 new Card('velociraptor');
 new Card('volcano');
 
-
 function timer() {
   setInterval(function () {
     if (timeLeft <= 0) {
@@ -77,11 +77,24 @@ function scoreCounter() {
 
 function easyBoard() {
   board = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 2; i++) {
     board.push(deck[i]);
     board.push(deck[i]);
   }
+  // easyEnder();
 }
+
+// function easyEnder() {
+// }
+
+// function endGame() {
+//   if (timeLeft === 1) {
+//     console.log('game over, dude.');
+//   }
+//   audioController.stopMusic();
+//   congratulations();
+// }
+// endGame();
 
 function mediumBoard() {
   board = [];
@@ -148,6 +161,8 @@ function cardSelected() {
       if (cardOneAlt === cardTwoAlt) {
         audioController.match();
         console.log('the cards match');
+        incorrect.setAttribute('style', 'text-align: center');
+        incorrect.textContent = 'correct';
         scoreCounter();
         clicks = 0;
         cardOne = null;
@@ -156,16 +171,11 @@ function cardSelected() {
         return cardTwo = null;
       } else if (cardOneAlt !== cardTwoAlt && clicks === 2) {
         audioController.noMatch();
-        // cardOne.setAttribute('class', 'incorrect cards');
-        // cardOne.classList.toggle('incorrect');
-        incorrect.setAttribute('style', 'text-align: center'); // cardOne.cla
-        ('incorrect-animation');
+        incorrect.setAttribute('style', 'text-align: center');
         incorrect.textContent = 'incorrect';
         setTimeout(() => {
-          // cardOne.classList.setAttribute('class', 'cards');
-          // cardOne.classList.remove('incorrect');
           cardOne.classList.toggle('flip');
-          incorrect.setAttribute('style', ''); // incorrect.classList.remove
+          incorrect.setAttribute('style', '');
           ('incorrect-animation');
           incorrect.textContent = '';
           cardOne.src = '../img/grey.png';
@@ -226,7 +236,7 @@ function handleSubmit(event) {
   savePlayer();
 }
 
-function handleDiffculty(e){
+function handleDiffculty(e) {
   let difficultyChosen = e.target.textContent;
   if (difficultyChosen === 'Easy') {
     audioController.startMusic();
@@ -246,7 +256,6 @@ function handleDiffculty(e){
   }
   difficulty.removeEventListener('click', handleDiffculty);
 }
-
 
 class AudioController {
   constructor() {
@@ -295,197 +304,31 @@ let audioController = new AudioController();
 playerForm.addEventListener('submit', handleSubmit);
 difficulty.addEventListener('click', handleDiffculty);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+playAgain.addEventListener('click', function (e) {
+  console.log(e.target.id);
+  document.getElementById('gameOver').style.display = 'none';
+  location.reload();
+  // clear inner HTML of gameboard
+  // reactivate difficulty event listener
+});
+
+function congratulations() {
+  let gameOver = document.getElementById('gameOver');
+  let score = document.createElement('div');
+  let gameTimer = document.createElement('div');
+  let h1 = document.createElement('h1');
+  score.textContent = 'Score: 100';
+  gameTimer.textContent = 'Timer: 1000';
+  h1.textContent = 'Game Over';
+  playAgain.id = 'play-again';
+  playAgain.textContent = 'Play Again';
+  gameOver.appendChild(h1);
+  gameOver.appendChild(score);
+  gameOver.appendChild(gameTimer);
+  gameOver.appendChild(playAgain);
+}
+
+
+window.onload = function() {
+  congratulations();
+};

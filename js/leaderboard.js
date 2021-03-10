@@ -7,13 +7,43 @@ allPlayers.push({
   name: 'Tony',
   score: 11,
 });
-
 allPlayers.push({
   name: 'John',
   score: 8,
 });
-
-allPlayers.sort(function(a, b) {
+allPlayers.push({
+  name: 'Michael',
+  score: 7,
+});
+allPlayers.push({
+  name: 'Betsy',
+  score: 10,
+});
+allPlayers.push({
+  name: 'Kevin',
+  score: 1,
+});
+allPlayers.push({
+  name: 'Steve',
+  score: 4,
+});
+allPlayers.push({
+  name: 'Katelyn',
+  score: 0,
+});
+allPlayers.push({
+  name: 'Timothy',
+  score: 9,
+});
+allPlayers.push({
+  name: 'Ryan',
+  score: 14,
+});
+allPlayers.push({
+  name: 'Joseph',
+  score: 5,
+});
+allPlayers.sort(function (a, b) {
   return b.score - a.score;
 });
 console.log(allPlayers);
@@ -64,3 +94,4 @@ renderLeaderBoard();
 //   }
 // };
 // topTenSorter();
+

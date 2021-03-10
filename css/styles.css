@@ -1,4 +1,5 @@
 body {
+  position: relative;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #4A00E0, #8E2DE2);
   /* Chrome 10-25, Safari 5.1-6 */
@@ -7,6 +8,7 @@ body {
   -webkit-transition: background-color 4s;
   transition: background-color 4s;
   transition-timing-function: ease-in-out;
+  height: auto;
   /* display: flex;
   justify-content: center; */
 }
@@ -20,7 +22,51 @@ body:hover {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#title{
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  color: whitesmoke;
+}
+
+#scoreboard {
+  height: 80vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: whitesmoke;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.play-again {
+  position: relative;
+  margin-bottom: 40px;
+  box-shadow: 1px 9px 3px 1px #8a2a21;
+  background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+  background-color: #c62d1f;
+  border-radius: 15px;
+  border: 3px solid #d02718;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 8px 9px;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px #810e05;
+}
+
+.play-again:hover {
+  background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+  background-color: #f24437;
+}
+
+.play-again:active {
+  position: relative;
+  top: 1px;
+}
+
+#title {
   display: flex;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -46,6 +92,7 @@ body:hover {
 
 #help h2 {
   padding-top: 7px;
+  font-size: 28px;
 }
 
 #help:hover {
@@ -55,9 +102,20 @@ body:hover {
   cursor: pointer;
 }
 
-.nav {
+#nav li {
+  position: relative;
+  text-align: right;
   display: inline-block;
-  margin: auto;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  top: 40px;
+  right: 90px;
+  height: 40px;
+  width: auto;
+  background-color: hotpink;
+  color: white;
+  transition: transform .5s;
 }
 
 .form {
@@ -71,6 +129,7 @@ body:hover {
   justify-content: center;
   min-width: 600px;
   width: 0vw;
+  height: 100vh;
   margin: auto;
   padding-top: 12px;
   display: grid;
@@ -97,7 +156,7 @@ body:hover {
   transform: scale(1.15);
   background-color: rgb(255, 255, 255);
   transition: ease-in-out .25s;
-  box-shadow:inset 0px 0px 12px black;
+  box-shadow: inset 0px 0px 12px black;
   box-shadow: 0px 0px 13px hsla(0, 0%, 33%, 0.5);
 }
 
@@ -145,8 +204,22 @@ footer {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 75%;
   text-align: center;
-  padding-bottom: 40px;
+  padding: 40px;
   margin: auto;
+}
+
+#correct {
+  color: green;
+  margin: auto;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 900;
+  height: 32px;
+  width: auto;
+  text-align: center;
+  transition: ease-in-out .6s;
 }
 
 #incorrect {
@@ -160,4 +233,55 @@ footer {
   width: auto;
   text-align: center;
   transition: ease-in-out .6s;
+}
+
+
+/* Congratulations / Game Over Popup */
+
+#gameOver {
+  position: fixed;
+  margin: auto;
+  top: 120px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10;
+  border-radius: 6px;
+  text-align: center;
+  padding: 24px;
+  height: 272px;
+  width: 320px;
+  backdrop-filter: blur(10px);
+}
+
+#gameOver div:nth-child(2) {
+  font-size: 100px;
+  position: relative;
+  display: block;
+}
+
+#gameOver div:nth-child(3) {
+  position: relative;
+  display: block;
+  color: #4A00E0;
+}
+
+#gameOver div:last-child {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  padding: 12px;
+  margin: auto;
+  display: block;
+  background-color: rgb(171, 74, 196);
+  color: white;
+  border-radius: 4px;
+  transition: transform .5s;
+}
+
+#gameOver div:last-child:hover {
+  cursor: pointer;
+  background-color: rgb(186, 74, 214);
+  transform: scale(1.1);
+  transition: ease-in-out .25s;
+  box-shadow: 0px 0px 13px hsla(0, 0%, 33%, 0.5);
 }
