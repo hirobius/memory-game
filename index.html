@@ -26,11 +26,23 @@
       <li>Easy</li>
       <li>Medium</li>
       <li>Hard</li>
+      <!-- <li>Reset</li> -->
     </ul>
   </section>
   <section id="form">
-    <form id="playername submission"></form>
+    <form id="playername">
+      <label for="player"> Player Name: </label>
+      <input id="nameInput" type="text" name="player">
+      <button type="submit">Enter</button>
+    </form>
   </section>
+  <div>
+    <h3>Timer: <span id="timer">100</span> </h3>
+  </div>
+  <div>
+    <h3>Points: <span id="ticker">0</span>
+    </h3>
+  </div>
   <main>
     <h3 id="incorrect"></h3>
     <section id="card-container"></section>

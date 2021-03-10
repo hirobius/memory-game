@@ -1,51 +1,26 @@
 'use strict';
 
-// let tries/moves = [];
-// let resetButton;
-// let congratulations = document.getElementById;
-// let tries = 0;
-// tries++;
-// function gameTimer();
-// insert method / set timeout to disable flip "cheating"
-
-// LEADERBOARD
-
-// let topTenEasy = [];
-// let topTenMedium = [];
-// let topTenHard = [];
-
-// let topPlayer = document.getElementById('leaderboard');
-// for (let i = 0; i < allPlayers.length; i++) {
-//   let child = document.createElement('li');
-//   let currentPlayer = allPlayers[i];
-//   child.textContent = currentPlayer.name;
-//   topPlayer.appendChild(child);
-// }
-// function topTenSorter(playerOne, playerTwo) {
-//   if (playerOne.tries > playerTwo.tries) {
-//     return -1;
-//   }
-//   if (playerOne.tries < playerTwo.tries) {
-//     return 1;
-//   }
-//   if (playerOne.tries === playerTwo.tries) {
-//     return 0;
-//   }
-// };
-// topTenSorter();
-
 let difficulty = document.getElementById('difficulty');
 let incorrect = document.getElementById('incorrect');
 let cardContainer = document.getElementById('card-container');
 const cards = document.getElementsByClassName('cards');
 let deck = [];
 let board = [];
+let timeLeftDisplay = document.getElementById('timer');
+// let gameOverText = document.getElementById('game-over-text');
+let ticker = document.getElementById('ticker');
+let score = 0;
+let timeLeft = 100;
+let playerForm = document.getElementById('playername');
+let allPlayers = JSON.parse(localStorage.getItem('players')) || [];
+let playerName = '';
 
 function Card(name) {
   this.name = name;
   this.src = `img/${name}.png`;
   deck.push(this);
 }
+
 new Card('allosaurus');
 new Card('ankylosaurus');
 new Card('ceratosaurus');
@@ -83,6 +58,23 @@ new Card('tyrannosaurus-rex');
 new Card('velociraptor');
 new Card('volcano');
 
+
+function timer() {
+  setInterval(function () {
+    if (timeLeft <= 0) {
+      clearInterval(timeLeft = 0);
+      // gameOver();
+    }
+    timeLeftDisplay.innerHTML = timeLeft;
+    timeLeft -= 1;
+  }, 1000);
+}
+
+function scoreCounter() {
+  score += 1;
+  ticker.innerHTML = score;
+}
+
 function easyBoard() {
   board = [];
   for (let i = 0; i < 8; i++) {
@@ -92,7 +84,6 @@ function easyBoard() {
 }
 
 function mediumBoard() {
-
   board = [];
   for (let i = 0; i < 12; i++) {
     board.push(deck[i]);
@@ -142,6 +133,7 @@ function cardSelected() {
     if (e.target.alt !== undefined) {
       clicks++;
       if (clicks === 1) {
+        audioController.flip();
         cardOne = e.target;
         cardOneAlt = e.target.alt;
         e.target.classList.toggle('flip');
@@ -154,22 +146,27 @@ function cardSelected() {
       }
       console.log(cardOne, cardTwo);
       if (cardOneAlt === cardTwoAlt) {
+        audioController.match();
         console.log('the cards match');
+        scoreCounter();
         clicks = 0;
         cardOne = null;
         cardOneAlt = null;
         cardTwoAlt = null;
         return cardTwo = null;
       } else if (cardOneAlt !== cardTwoAlt && clicks === 2) {
+        audioController.noMatch();
         // cardOne.setAttribute('class', 'incorrect cards');
         // cardOne.classList.toggle('incorrect');
-        incorrect.setAttribute('style', 'text-align: center'); // cardOne.classList.add('incorrect-animation');
+        incorrect.setAttribute('style', 'text-align: center'); // cardOne.cla
+        ('incorrect-animation');
         incorrect.textContent = 'incorrect';
         setTimeout(() => {
           // cardOne.classList.setAttribute('class', 'cards');
           // cardOne.classList.remove('incorrect');
           cardOne.classList.toggle('flip');
-          incorrect.setAttribute('style', ''); // incorrect.classList.remove('incorrect-animation');
+          incorrect.setAttribute('style', ''); // incorrect.classList.remove
+          ('incorrect-animation');
           incorrect.textContent = '';
           cardOne.src = '../img/grey.png';
           cardTwo.classList.toggle('flip');
@@ -186,29 +183,309 @@ function cardSelected() {
   });
 }
 
-function populate(){
+function populate() {
   deckShuffler();
   renderCards();
   cardSelected();
 }
 
-window.onload = function () {
-  let main = document.createElement('main');
-  mediumBoard();
-  populate();
-  main.setAttribute('class', 'loaded');
-};
+// window.onload = function () {
+// let main = document.createElement('main');
+// mediumBoard();
+// populate();
+// main.setAttribute('class', 'loaded');
+// };
 
-difficulty.addEventListener('click', function (e) {
+
+/////// TO Do
+// function gameOver() {
+// audioController.gameOver();
+// audioController.stopMusic();
+// document.getElementById('game-over-text').classList.add('visibe');
+// }
+
+
+// We can pass the timer argument in this too
+function Player(name, score) {
+  this.name = name;
+  this.score = score;
+  // this.timer = timer;
+  allPlayers.push(this);
+}
+
+function savePlayer() {
+  new Player(playerName, score);
+  localStorage.setItem('players', JSON.stringify(allPlayers));
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  playerName = event.target.player.value;
+  console.log(playerName);
+  // move this function call to the place where score is final
+  savePlayer();
+}
+
+function handleDiffculty(e){
   let difficultyChosen = e.target.textContent;
   if (difficultyChosen === 'Easy') {
+    audioController.startMusic();
+    timer();
     easyBoard();
     populate();
   } else if (difficultyChosen === 'Medium') {
+    audioController.startMusic();
+    timer();
     mediumBoard();
     populate();
   } else if (difficultyChosen === 'Hard') {
+    audioController.startMusic();
+    timer();
     hardBoard();
     populate();
   }
-});
+  difficulty.removeEventListener('click', handleDiffculty);
+}
+
+
+class AudioController {
+  constructor() {
+    this.backgroundMusic = new Audio('../music/bg2.mp3');
+    this.flipSound = new Audio('../music/flip.wav');
+    this.matchSound = new Audio('../music/right.wav');
+    this.noMatchsound = new Audio('../music/wrong.wav');
+    this.victorySound = new Audio('../music/victory.wav');
+    this.gameOverSound = new Audio('../music/gameover.wav');
+    this.backgroundMusic.volume = 1;
+    this.flipSound.volume = 1;
+    this.matchSound.volume = 1;
+    // this.noMatchSound.volume = 1;
+    // this.gameOverSound.volume = 1;
+    // this.vitorySound.volume = 1;
+    this.backgroundMusic.loop = true;
+  }
+  startMusic() {
+    this.backgroundMusic.play();
+  }
+  stopMusic() {
+    this.backgroundMusic.pause();
+    this.backgroundMusic.currentTime = 0;
+  }
+  flip() {
+    this.flipSound.play();
+  }
+  match() {
+    this.matchSound.play();
+  }
+  noMatch() {
+    this.noMatchsound.play();
+  }
+  victory() {
+    this.stopMusic();
+    this.victorySound.play();
+  }
+  gameOver() {
+    this.stopMusic();
+    this.gameOverSound.play();
+  }
+}
+
+let audioController = new AudioController();
+
+playerForm.addEventListener('submit', handleSubmit);
+difficulty.addEventListener('click', handleDiffculty);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
