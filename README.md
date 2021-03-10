@@ -91,3 +91,15 @@ _Stat Tracker_
 
 <!-- dinosaur image pack reference is below -->
 <div>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+<!-- CSS animation -->
+https://css-tricks.com/almanac/properties/a/animation/
+
+<!-- CSS Transitions -->
+https://www.w3schools.com/css/tryit.asp?filename=trycss3_transition2
+
+<!-- Set Timeout -->
+https://electrictoolbox.com/using-settimeout-javascript/
+
+<!-- Linear Gradient Generator -->
+https://uigradients.com/#Amin

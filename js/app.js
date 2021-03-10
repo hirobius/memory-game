@@ -6,6 +6,7 @@
 // let tries = 0;
 // tries++;
 // function gameTimer();
+// insert method / set timeout to disable flip "cheating"
 
 // LEADERBOARD
 
@@ -91,6 +92,7 @@ function easyBoard() {
 }
 
 function mediumBoard() {
+
   board = [];
   for (let i = 0; i < 12; i++) {
     board.push(deck[i]);
@@ -160,12 +162,12 @@ function cardSelected() {
         return cardTwo = null;
       } else if (cardOneAlt !== cardTwoAlt && clicks === 2) {
         // cardOne.setAttribute('class', 'incorrect cards');
-        cardOne.classList.toggle('incorrect');
-        incorrect.setAttribute('style', 'background-color: red; font-size: 100px'); // cardOne.classList.add('incorrect-animation');
+        // cardOne.classList.toggle('incorrect');
+        incorrect.setAttribute('style', 'text-align: center'); // cardOne.classList.add('incorrect-animation');
         incorrect.textContent = 'incorrect';
         setTimeout(() => {
           // cardOne.classList.setAttribute('class', 'cards');
-          cardOne.classList.remove('incorrect');
+          // cardOne.classList.remove('incorrect');
           cardOne.classList.toggle('flip');
           incorrect.setAttribute('style', ''); // incorrect.classList.remove('incorrect-animation');
           incorrect.textContent = '';
@@ -184,23 +186,29 @@ function cardSelected() {
   });
 }
 
+function populate(){
+  deckShuffler();
+  renderCards();
+  cardSelected();
+}
+
+window.onload = function () {
+  let main = document.createElement('main');
+  mediumBoard();
+  populate();
+  main.setAttribute('class', 'loaded');
+};
+
 difficulty.addEventListener('click', function (e) {
   let difficultyChosen = e.target.textContent;
-  console.log(difficultyChosen);
   if (difficultyChosen === 'Easy') {
     easyBoard();
-    deckShuffler();
-    renderCards();
-    cardSelected();
+    populate();
   } else if (difficultyChosen === 'Medium') {
     mediumBoard();
-    deckShuffler();
-    renderCards();
-    cardSelected();
+    populate();
   } else if (difficultyChosen === 'Hard') {
     hardBoard();
-    deckShuffler();
-    renderCards();
-    cardSelected();
+    populate();
   }
 });
