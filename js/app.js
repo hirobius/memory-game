@@ -137,7 +137,7 @@ function renderCards() {
   console.log(randomArray);
   for (let i = 0; i < randomArray.length; i++) {
     let card = document.createElement('img');
-    card.setAttribute('src', '../img/grey.png');
+    card.setAttribute('src', 'img/grey.png');
     card.setAttribute('class', 'cards');
     card.setAttribute('id', i);
     card.setAttribute('alt', `${board[randomArray[i]].src}`);
@@ -185,9 +185,9 @@ function cardSelected() {
           incorrect.setAttribute('style', '');
           ('incorrect-animation');
           incorrect.textContent = '';
-          cardOne.src = '../img/grey.png';
+          cardOne.src = 'img/grey.png';
           cardTwo.classList.toggle('flip');
-          cardTwo.src = '../img/grey.png';
+          cardTwo.src = 'img/grey.png';
           console.log('no match');
           clicks = 0;
           cardOne = null;
@@ -247,12 +247,12 @@ function handleDiffculty(e) {
 
 class AudioController {
   constructor() {
-    this.backgroundMusic = new Audio('../music/bg2.mp3');
-    this.flipSound = new Audio('../music/flip.wav');
-    this.matchSound = new Audio('../music/right.wav');
-    this.noMatchSound = new Audio('../music/wrong.wav');
-    this.victorySound = new Audio('../music/victory.wav');
-    this.gameOverSound = new Audio('../music/gameover.wav');
+    this.backgroundMusic = new Audio('music/bg2.mp3');
+    this.flipSound = new Audio('music/flip.wav');
+    this.matchSound = new Audio('music/right.wav');
+    this.noMatchSound = new Audio('music/wrong.wav');
+    this.victorySound = new Audio('music/victory.wav');
+    this.gameOverSound = new Audio('music/gameover.wav');
     this.backgroundMusic.volume = 0;
     this.flipSound.volume = .5;
     this.matchSound.volume = .5;
