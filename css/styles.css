@@ -400,3 +400,12 @@ main {
   padding-top: 180px;
   position: relative;
 }
+
+.about-container {
+  display: flex;
+  height: 80vh;
+}
+
+.about {
+  margin: 40px;
+}
