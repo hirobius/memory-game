@@ -7,11 +7,13 @@ let playAgain = document.createElement('div');
 const cards = document.getElementsByClassName('cards');
 let deck = [];
 let board = [];
+let randomArray = [];
 let timeLeftDisplay = document.getElementById('timer');
 // let gameOverText = document.getElementById('game-over-text');
 let ticker = document.getElementById('ticker');
 let score = 0;
-let timeLeft = 2;
+let maxScore = 0;
+let timeLeft = 10;
 let playerForm = document.getElementById('playername');
 let allPlayers = JSON.parse(localStorage.getItem('players')) || [];
 let playerName = '';
@@ -60,12 +62,23 @@ new Card('velociraptor');
 new Card('volcano');
 
 function timer() {
-  setInterval(function () {
+  // while (timeLeft > 0 || score !== maxScore) {
+  //   timeLeftDisplay.innerHTML = timeLeft;
+  //   console.log(score, maxScore);
+  //   timeLeft -= 1;
+  // }
+
+  const intervalId = setInterval(function () {
     if (timeLeft <= 0) {
-      clearInterval(timeLeft = 0);
-      // gameOver();
+      endGame();
+      clearInterval(intervalId);
+    }
+    if (score === maxScore) {
+      endGame();
+      clearInterval(intervalId);
     }
     timeLeftDisplay.innerHTML = timeLeft;
+    console.log(score, maxScore);
     timeLeft -= 1;
   }, 1000);
 }
@@ -75,29 +88,23 @@ function scoreCounter() {
   ticker.innerHTML = score;
 }
 
+function endGame() {
+  audioController.gameOver();
+  congratulations();
+}
+
 function easyBoard() {
   board = [];
+  maxScore = 2;
   for (let i = 0; i < 2; i++) {
     board.push(deck[i]);
     board.push(deck[i]);
   }
-  // easyEnder();
 }
-
-// function easyEnder() {
-// }
-
-// function endGame() {
-//   if (timeLeft === 1) {
-//     console.log('game over, dude.');
-//   }
-//   audioController.stopMusic();
-//   congratulations();
-// }
-// endGame();
 
 function mediumBoard() {
   board = [];
+  maxScore = 12;
   for (let i = 0; i < 12; i++) {
     board.push(deck[i]);
     board.push(deck[i]);
@@ -106,6 +113,7 @@ function mediumBoard() {
 
 function hardBoard() {
   board = [];
+  maxScore = 18;
   for (let i = 0; i < 18; i++) {
     board.push(deck[i]);
     board.push(deck[i]);
@@ -116,7 +124,6 @@ function shuffle() {
   return Math.floor(Math.random() * board.length);
 }
 
-let randomArray = [];
 function deckShuffler() {
   while (randomArray.length < board.length) {
     let cardRandom = shuffle();
@@ -127,13 +134,13 @@ function deckShuffler() {
 }
 
 function renderCards() {
+  console.log(randomArray);
   for (let i = 0; i < randomArray.length; i++) {
     let card = document.createElement('img');
     card.setAttribute('src', '../img/grey.png');
     card.setAttribute('class', 'cards');
     card.setAttribute('id', i);
-    card.setAttribute('alt', `${board[randomArray[i]].
-      src}`);
+    card.setAttribute('alt', `${board[randomArray[i]].src}`);
     cardContainer.appendChild(card);
   }
 }
@@ -199,22 +206,6 @@ function populate() {
   cardSelected();
 }
 
-// window.onload = function () {
-// let main = document.createElement('main');
-// mediumBoard();
-// populate();
-// main.setAttribute('class', 'loaded');
-// };
-
-
-/////// TO Do
-// function gameOver() {
-// audioController.gameOver();
-// audioController.stopMusic();
-// document.getElementById('game-over-text').classList.add('visibe');
-// }
-
-
 // We can pass the timer argument in this too
 function Player(name, score) {
   this.name = name;
@@ -240,20 +231,16 @@ function handleDiffculty(e) {
   let difficultyChosen = e.target.textContent;
   if (difficultyChosen === 'Easy') {
     audioController.startMusic();
-    timer();
     easyBoard();
-    populate();
   } else if (difficultyChosen === 'Medium') {
     audioController.startMusic();
-    timer();
     mediumBoard();
-    populate();
   } else if (difficultyChosen === 'Hard') {
     audioController.startMusic();
-    timer();
     hardBoard();
-    populate();
   }
+  populate();
+  timer();
   difficulty.removeEventListener('click', handleDiffculty);
 }
 
@@ -262,13 +249,13 @@ class AudioController {
     this.backgroundMusic = new Audio('../music/bg2.mp3');
     this.flipSound = new Audio('../music/flip.wav');
     this.matchSound = new Audio('../music/right.wav');
-    this.noMatchsound = new Audio('../music/wrong.wav');
+    this.noMatchSound = new Audio('../music/wrong.wav');
     this.victorySound = new Audio('../music/victory.wav');
     this.gameOverSound = new Audio('../music/gameover.wav');
-    this.backgroundMusic.volume = 1;
+    this.backgroundMusic.volume = .25;
     this.flipSound.volume = 1;
     this.matchSound.volume = 1;
-    // this.noMatchSound.volume = 1;
+    this.noMatchSound.volume = .25;
     // this.gameOverSound.volume = 1;
     // this.vitorySound.volume = 1;
     this.backgroundMusic.loop = true;
@@ -287,7 +274,7 @@ class AudioController {
     this.matchSound.play();
   }
   noMatch() {
-    this.noMatchsound.play();
+    this.noMatchSound.play();
   }
   victory() {
     this.stopMusic();
@@ -301,34 +288,33 @@ class AudioController {
 
 let audioController = new AudioController();
 
-playerForm.addEventListener('submit', handleSubmit);
 difficulty.addEventListener('click', handleDiffculty);
 
 playAgain.addEventListener('click', function (e) {
   console.log(e.target.id);
   document.getElementById('gameOver').style.display = 'none';
   location.reload();
-  // clear inner HTML of gameboard
-  // reactivate difficulty event listener
 });
 
 function congratulations() {
-  let gameOver = document.getElementById('gameOver');
+  let gameOver = document.getElementById('game-over-styling');
+  gameOver.setAttribute('class', 'game-over-styling');
   let score = document.createElement('div');
   let gameTimer = document.createElement('div');
   let h1 = document.createElement('h1');
+  let gameOverForm = document.createElement('form');
+
   score.textContent = 'Score: 100';
   gameTimer.textContent = 'Timer: 1000';
   h1.textContent = 'Game Over';
   playAgain.id = 'play-again';
   playAgain.textContent = 'Play Again';
+
   gameOver.appendChild(h1);
   gameOver.appendChild(score);
   gameOver.appendChild(gameTimer);
   gameOver.appendChild(playAgain);
+  gameOver.appendChild(gameOverForm);
+
+  playerForm.addEventListener('submit', handleSubmit);
 }
-
-
-window.onload = function() {
-  congratulations();
-};

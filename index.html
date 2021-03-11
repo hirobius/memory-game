@@ -12,50 +12,53 @@
 
 <body>
   <header>
-    <h1 id="title">Memory Madness</h1>
     <div id="nav">
       <ul>
-        <li>
-          <a href="about.html">About Us</a>
-        </li>
-        <li>
-          <a href="leaderboard.html">leaderboard</a>
-        </li>
+        <a href="about.html">
+          <li>
+            <span>About Us</span>
+          </li>
+        </a>
+        <a href="leaderboard.html">
+          <li>
+            Leaderboard
+          </li>
+        </a>
         <div id="help">
           <h2>?</h2>
         </div>
       </ul>
     </div>
+    <h1 id="title">Memory Madness</h1>
   </header>
-  <section class="play">
-    <ul id="difficulty">
-      <li>Easy</li>
-      <li>Medium</li>
-      <li>Hard</li>
-      <!-- <li>Reset</li> -->
-    </ul>
-  </section>
-  <section id="form">
-    <form id="playername">
-      <label for="player"> Player Name: </label>
-      <input id="nameInput" type="text" name="player">
-      <button type="submit">Enter</button>
-    </form>
-  </section>
-  <div>
-    <h3>Timer: <span id="timer">100</span> </h3>
-  </div>
-  <div>
-    <h3>Points: <span id="ticker">0</span>
-    </h3>
-  </div>
   <main>
-    <h3 id="incorrect"></h3>
-    <section id="gameOver"></section>
+    <section class="play">
+      <ul id="difficulty">
+        <li>Easy</li>
+        <li>Medium</li>
+        <li>Hard</li>
+        <!-- <li>Reset</li> -->
+      </ul>
+    </section>
+    <div class="meta">
+      <div id="timer">100</div>
+      <div id="ticker">0</div>
+    </div>
+    <div id="incorrect"></div>
+    <section id="game-over-styling">
+      <section id="form">
+        <form id="playername">
+          <label for="player"> Enter Name </label>
+          <input id="nameInput" type="text" name="player">
+          <button type="submit">Enter</button>
+        </form>
+      </section>
+    </section>
+    </div>
     <section id="card-container"></section>
     <script src="js/app.js"></script>
     <footer>
-      <p>Powered by Memory &copy; 2021 All Rights Reserved</p>
+      <p>Powered by Memory Madness &copy; 2021 All Rights Reserved</p>
     </footer>
   </main>
 </body>
