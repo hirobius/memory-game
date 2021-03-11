@@ -149,21 +149,10 @@ a {
   box-shadow: 0px 0px 13px hsla(0, 0%, 33%, 0.5);
 }
 
-#form {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: auto;
-  padding: 12px;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 125%;
-  font-weight: bold;
-  font-weight: 400;
-  color: hotpink;
-  background-color: #ffffff;
-  width: 160px;
-  display: block;
-  height: auto;
+#playername {
+  display: none;
 }
+
 
 input {
   margin: 12px;
@@ -296,12 +285,18 @@ footer {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: 10;
+  z-index: 100;
   border-radius: 6px;
   text-align: center;
   height: 100%;
   width: 100%;
-  /* backdrop-filter: blur(10px); */
+  display: block;
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  font-size: 125%;
+  font-weight: bold;
+  font-weight: 400;
+  color: hotpink;
 }
 
 .game-over-styling div:nth-child(2) {
@@ -401,6 +396,7 @@ div #ticker {
 }
 
 main {
+  height: 100%;
   padding-top: 180px;
   position: relative;
 }
