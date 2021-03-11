@@ -28,7 +28,7 @@ allPlayers.push({
   score: 4,
 });
 allPlayers.push({
-  name: 'Katelyn',
+  name: 'Person',
   score: 0,
 });
 allPlayers.push({

@@ -22,6 +22,15 @@ body:hover {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+header {
+  position: fixed;
+  top: 0px;
+  height: 180px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
 h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
@@ -34,7 +43,7 @@ h2 {
   color: whitesmoke;
   line-height: 150%;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 140px;
 }
 
 .play-again {
@@ -72,7 +81,9 @@ h2 {
   font-family: Arial, Helvetica, sans-serif;
   color: whitesmoke;
   font-size: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-shadow: 0px 0px 6px hsla(0, 0%, 33%, 0.5);
 }
 
 #help {
@@ -102,26 +113,67 @@ h2 {
   cursor: pointer;
 }
 
+#nav {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  text-decoration: none;
+  z-index: 9;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 #nav li {
   position: relative;
-  text-align: right;
+  text-align: center;
+  padding: 12px;
+  height: 16px;
+  margin: 5px;
   display: inline-block;
   border-radius: 6px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 28px;
-  top: 40px;
-  right: 90px;
-  height: 40px;
   width: auto;
-  background-color: hotpink;
-  color: white;
+  background-color: #ba4ad6;
+  text-decoration: none;
   transition: transform .5s;
 }
 
-.form {
-  display: inline-block;
+#nav li:hover {
+  cursor: pointer;
+  background-color: #c15dda;
+  transform: scale(1.1);
+  transition: ease-in-out .25s;
+  box-shadow: 0px 0px 13px hsla(0, 0%, 33%, 0.5);
+}
+
+#form {
+  font-family: Arial, Helvetica, sans-serif;
   margin: auto;
-  height: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 125%;
+  font-weight: bold;
+  font-weight: 400;
+  color: hotpink;
+  background-color: #ffffff;
+  width: 160px;
+  display: block;
+  height: auto;
+}
+
+input {
+  margin: 12px;
+  background-color: whitesmoke;
+  color: #4A00E0;
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #ba4ad6;
+  width: 100px;
+  text-align: center;
 }
 
 #card-container {
@@ -183,7 +235,7 @@ h2 {
   display: inline-block;
   margin: 5px;
   padding: 12px;
-  background-color: rgb(171, 74, 196);
+  background-color: #ba4ad6;
   color: white;
   border-radius: 4px;
   transition: transform .5s;
@@ -191,7 +243,7 @@ h2 {
 
 .play li:hover {
   cursor: pointer;
-  background-color: rgb(186, 74, 214);
+  background-color: #c15dda;
   transform: scale(1.1);
   transition: ease-in-out .25s;
   box-shadow: 0px 0px 13px hsla(0, 0%, 33%, 0.5);
@@ -235,11 +287,10 @@ footer {
   transition: ease-in-out .6s;
 }
 
-
 /* Congratulations / Game Over Popup */
-
-#gameOver {
+.game-over-styling {
   position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
   margin: auto;
   top: 120px;
   bottom: 0px;
@@ -248,27 +299,28 @@ footer {
   z-index: 10;
   border-radius: 6px;
   text-align: center;
-  padding: 24px;
-  height: 272px;
-  width: 320px;
-  backdrop-filter: blur(10px);
+  height: 100%;
+  width: 100%;
+  /* backdrop-filter: blur(10px); */
 }
 
-#gameOver div:nth-child(2) {
-  font-size: 100px;
+.game-over-styling div:nth-child(2) {
+  font-size: 200%;
+  color: whitesmoke;
   position: relative;
   display: block;
 }
 
-#gameOver div:nth-child(3) {
+.game-over-styling div:nth-child(3) {
   position: relative;
   display: block;
   color: #4A00E0;
 }
 
-#gameOver div:last-child {
+.game-over-styling div:last-child {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
+  width: 200px;
   padding: 12px;
   margin: auto;
   display: block;
@@ -278,10 +330,77 @@ footer {
   transition: transform .5s;
 }
 
-#gameOver div:last-child:hover {
+.game-over-styling div:last-child:hover {
   cursor: pointer;
   background-color: rgb(186, 74, 214);
   transform: scale(1.1);
   transition: ease-in-out .25s;
   box-shadow: 0px 0px 13px hsla(0, 0%, 33%, 0.5);
+}
+
+
+.about {
+  position: relative;
+  padding-top: 40px;
+  left: 40px;
+  margin: auto;
+  display: inline-block;
+  justify-content: center;
+  color: whitesmoke;
+  line-height: 125%;
+  width: 600px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.about img {
+  width: 200px;
+  border-radius: 100%;
+}
+
+.profile-links img {
+  width: 20px;
+  border-radius: 0;
+  padding-top: 12px;
+  padding-right: 6px;
+}
+
+div #timer {
+  margin: auto;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 900;
+  height: 32px;
+  width: auto;
+  text-align: left;
+  transition: ease-in-out .6s;
+}
+
+div #ticker {
+  margin: auto;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 900;
+  height: 32px;
+  width: auto;
+  text-align: right;
+  transition: ease-in-out .6s;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding-top: 12px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+main {
+  padding-top: 180px;
+  position: relative;
 }
