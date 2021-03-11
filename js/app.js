@@ -13,7 +13,7 @@ let timeLeftDisplay = document.getElementById('timer');
 let ticker = document.getElementById('ticker');
 let score = 0;
 let maxScore = 0;
-let timeLeft = 10;
+let timeLeft = 100;
 let playerForm = document.getElementById('playername');
 let allPlayers = JSON.parse(localStorage.getItem('players')) || [];
 let playerName = '';
@@ -67,7 +67,6 @@ function timer() {
   //   console.log(score, maxScore);
   //   timeLeft -= 1;
   // }
-
   const intervalId = setInterval(function () {
     if (timeLeft <= 0) {
       endGame();
@@ -90,6 +89,7 @@ function scoreCounter() {
 
 function endGame() {
   audioController.gameOver();
+  console.log('potato');
   congratulations();
 }
 
@@ -288,6 +288,7 @@ class AudioController {
 
 let audioController = new AudioController();
 
+playerForm.addEventListener('submit', handleSubmit);
 difficulty.addEventListener('click', handleDiffculty);
 
 playAgain.addEventListener('click', function (e) {
@@ -298,11 +299,13 @@ playAgain.addEventListener('click', function (e) {
 
 function congratulations() {
   let gameOver = document.getElementById('game-over-styling');
-  gameOver.setAttribute('class', 'game-over-styling');
+  let h1 = document.createElement('h1');
   let score = document.createElement('div');
   let gameTimer = document.createElement('div');
-  let h1 = document.createElement('h1');
-  let gameOverForm = document.createElement('form');
+  let gameOverForm = document.getElementById('playername');
+
+  gameOver.setAttribute('class', 'game-over-styling');
+  gameOverForm.style.display = 'block';
 
   score.textContent = 'Score: 100';
   gameTimer.textContent = 'Timer: 1000';
@@ -315,6 +318,4 @@ function congratulations() {
   gameOver.appendChild(gameTimer);
   gameOver.appendChild(playAgain);
   gameOver.appendChild(gameOverForm);
-
-  playerForm.addEventListener('submit', handleSubmit);
 }
