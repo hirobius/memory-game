@@ -95,8 +95,8 @@ function endGame() {
 
 function easyBoard() {
   board = [];
-  maxScore = 2;
-  for (let i = 0; i < 2; i++) {
+  maxScore = 3;
+  for (let i = 0; i < 3; i++) {
     board.push(deck[i]);
     board.push(deck[i]);
   }
@@ -225,6 +225,7 @@ function handleSubmit(event) {
   console.log(playerName);
   // move this function call to the place where score is final
   savePlayer();
+  location.reload();
 }
 
 function handleDiffculty(e) {
@@ -252,11 +253,11 @@ class AudioController {
     this.noMatchSound = new Audio('../music/wrong.wav');
     this.victorySound = new Audio('../music/victory.wav');
     this.gameOverSound = new Audio('../music/gameover.wav');
-    this.backgroundMusic.volume = .25;
-    this.flipSound.volume = 1;
-    this.matchSound.volume = 1;
+    this.backgroundMusic.volume = 0;
+    this.flipSound.volume = .5;
+    this.matchSound.volume = .5;
     this.noMatchSound.volume = .25;
-    // this.gameOverSound.volume = 1;
+    this.gameOverSound.volume = .5;
     // this.vitorySound.volume = 1;
     this.backgroundMusic.loop = true;
   }
@@ -300,22 +301,19 @@ playAgain.addEventListener('click', function (e) {
 function congratulations() {
   let gameOver = document.getElementById('game-over-styling');
   let h1 = document.createElement('h1');
-  let score = document.createElement('div');
+  let scoreDiv = document.createElement('div');
   let gameTimer = document.createElement('div');
   let gameOverForm = document.getElementById('playername');
 
   gameOver.setAttribute('class', 'game-over-styling');
   gameOverForm.style.display = 'block';
 
-  score.textContent = 'Score: 100';
-  gameTimer.textContent = 'Timer: 1000';
+  scoreDiv.textContent = `Score: ${score}`;
+  gameTimer.textContent = `Time Remaining: ${timeLeft}`;
   h1.textContent = 'Game Over';
-  playAgain.id = 'play-again';
-  playAgain.textContent = 'Play Again';
 
   gameOver.appendChild(h1);
-  gameOver.appendChild(score);
+  gameOver.appendChild(scoreDiv);
   gameOver.appendChild(gameTimer);
-  gameOver.appendChild(playAgain);
   gameOver.appendChild(gameOverForm);
 }
